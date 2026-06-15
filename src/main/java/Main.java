@@ -29,7 +29,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
 
         MenuView menuView = new MenuView();
-        sceneMenu = new Scene(menuView, 300, 250);
+        sceneMenu = new Scene(menuView, 600, 500);
 
         CategoriaView viewCategoria = new CategoriaView();
         sceneCategoria = new Scene(viewCategoria, 980, 360);
@@ -78,7 +78,7 @@ public class Main extends Application {
         // Configura o MenuController com o EventoController para recarregar categorias
         menuController.setEventoController(controllerEvento);
 
-        primaryStage.setTitle("Exemplo MVC JavaFX POO");
+        primaryStage.setTitle("JoinUp");
         primaryStage.setScene(sceneMenu);
         primaryStage.show();
 

@@ -20,7 +20,7 @@ public class MenuView extends GridPane {
         this.setAlignment(Pos.CENTER);
         this.setHgap(10);
         this.setVgap(10);
-        this.setPadding(new Insets(25, 25, 25, 25));
+        this.setPadding(new Insets(10, 10, 10, 10));
 
         botaoCategoria = new Button("Gestão de categorias");
         botaoEvento = new Button("Gestão de eventos");
