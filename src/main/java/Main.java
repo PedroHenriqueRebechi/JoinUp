@@ -14,12 +14,16 @@ import view.EventoView;
 import view.MenuView;
 import view.OrganizadorView;
 import view.ParticipanteView;
+import controller.ArtistaController;
+import controller.IngressoController;
+import view.ArtistaView;
+import view.IngressoView;
 import view.SuporteView;
 
 public class Main extends Application {
 
-    Scene sceneMenu, sceneCategoria, sceneEvento, sceneParticipante, sceneOrganizador, sceneSuporte,
-            sceneChamadoSuporte;
+    Scene sceneMenu, sceneCategoria, sceneEvento, sceneParticipante, sceneOrganizador, 
+          sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte;
 
     @Override
     public void start(Stage primaryStage) {
@@ -39,6 +43,12 @@ public class Main extends Application {
         OrganizadorView viewOrganizador = new OrganizadorView();
         sceneOrganizador = new Scene(viewOrganizador, 1040, 360);
 
+        ArtistaView viewArtista = new ArtistaView();
+        sceneArtista = new Scene(viewArtista, 1040, 360);
+
+        IngressoView viewIngresso = new IngressoView();
+        sceneIngresso = new Scene(viewIngresso, 1040, 360);  
+
         SuporteView viewSuporte = new SuporteView();
         sceneSuporte = new Scene(viewSuporte, 1040, 360);
 
@@ -46,14 +56,22 @@ public class Main extends Application {
         sceneChamadoSuporte = new Scene(viewChamadoSuporte, 1040, 360);
 
         MenuController menuController = new MenuController(menuView, primaryStage, sceneCategoria, sceneEvento,
-                sceneParticipante, sceneOrganizador, sceneSuporte, sceneChamadoSuporte);
+                sceneParticipante, sceneOrganizador, sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte);
+
         CategoriaController controllerCategoria = new CategoriaController(viewCategoria, primaryStage, sceneMenu);
+
         EventoController controllerEvento = new EventoController(viewEvento, primaryStage, sceneMenu);
-        ParticipanteController controllerParticipante = new ParticipanteController(viewParticipante, primaryStage,
-                sceneMenu);
-        OrganizadorController controllerOrganizador = new OrganizadorController(viewOrganizador, primaryStage,
-                sceneMenu);
+
+        ParticipanteController controllerParticipante = new ParticipanteController(viewParticipante, primaryStage, sceneMenu);
+
+        OrganizadorController controllerOrganizador = new OrganizadorController(viewOrganizador, primaryStage, sceneMenu);
+
+        ArtistaController controllerArtista = new ArtistaController(viewArtista, primaryStage, sceneMenu);
+        
+        IngressoController controllerIngresso = new IngressoController(viewIngresso, primaryStage, sceneMenu);
+
         SuporteController controllerSuporte = new SuporteController(viewSuporte, primaryStage, sceneMenu);
+
         ChamadoSuporteController controllerChamadoSuporte = new ChamadoSuporteController(viewChamadoSuporte,
                 primaryStage, sceneMenu);
 
