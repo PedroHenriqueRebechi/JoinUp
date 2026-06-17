@@ -1,4 +1,3 @@
-import controller.AvaliacaoController;
 import controller.CategoriaController;
 import controller.ChamadoSuporteController;
 import controller.EventoController;
@@ -6,12 +5,10 @@ import controller.FormaPagamentoController;
 import controller.MenuController;
 import controller.OrganizadorController;
 import controller.ParticipanteController;
-import controller.PublicacaoController;
 import controller.SuporteController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import view.AvaliacaoView;
 import view.CategoriaView;
 import view.ChamadoSuporteView;
 import view.EventoView;
@@ -19,7 +16,6 @@ import view.FormaPagamentoView;
 import view.MenuView;
 import view.OrganizadorView;
 import view.ParticipanteView;
-import view.PublicacaoView;
 import controller.ArtistaController;
 import controller.IngressoController;
 import controller.LocalController;
@@ -30,15 +26,14 @@ import view.SuporteView;
 
 public class Main extends Application {
 
-    Scene sceneMenu, sceneCategoria, sceneEvento, sceneParticipante, sceneOrganizador,
-            sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte, sceneFormaPagamento,
-            sceneLocal, scenePublicacao, sceneAvaliacao;
+    Scene sceneMenu, sceneCategoria, sceneEvento, sceneParticipante, sceneOrganizador, 
+          sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte, sceneFormaPagamento, sceneLocal;
 
     @Override
     public void start(Stage primaryStage) {
 
         MenuView menuView = new MenuView();
-        sceneMenu = new Scene(menuView, 850, 720);
+        sceneMenu = new Scene(menuView, 600, 500);
 
         CategoriaView viewCategoria = new CategoriaView();
         sceneCategoria = new Scene(viewCategoria, 980, 360);
@@ -56,7 +51,7 @@ public class Main extends Application {
         sceneArtista = new Scene(viewArtista, 1040, 360);
 
         IngressoView viewIngresso = new IngressoView();
-        sceneIngresso = new Scene(viewIngresso, 1040, 360);
+        sceneIngresso = new Scene(viewIngresso, 1040, 360);  
 
         SuporteView viewSuporte = new SuporteView();
         sceneSuporte = new Scene(viewSuporte, 1040, 360);
@@ -70,15 +65,8 @@ public class Main extends Application {
         LocalView viewLocal = new LocalView();
         sceneLocal = new Scene(viewLocal, 1040, 360);
 
-        PublicacaoView viewPublicacao = new PublicacaoView();
-        scenePublicacao = new Scene(viewPublicacao, 1160, 420);
-
-        AvaliacaoView viewAvaliacao = new AvaliacaoView();
-        sceneAvaliacao = new Scene(viewAvaliacao, 1160, 420);
-
         MenuController menuController = new MenuController(menuView, primaryStage, sceneCategoria, sceneEvento,
-                sceneParticipante, sceneOrganizador, sceneArtista, sceneIngresso, sceneSuporte,
-                sceneChamadoSuporte, sceneFormaPagamento, sceneLocal, scenePublicacao, sceneAvaliacao);
+                sceneParticipante, sceneOrganizador, sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte, sceneFormaPagamento, sceneLocal);
 
         CategoriaController controllerCategoria = new CategoriaController(viewCategoria, primaryStage, sceneMenu);
 
@@ -89,7 +77,7 @@ public class Main extends Application {
         OrganizadorController controllerOrganizador = new OrganizadorController(viewOrganizador, primaryStage, sceneMenu);
 
         ArtistaController controllerArtista = new ArtistaController(viewArtista, primaryStage, sceneMenu);
-
+        
         IngressoController controllerIngresso = new IngressoController(viewIngresso, primaryStage, sceneMenu);
 
         SuporteController controllerSuporte = new SuporteController(viewSuporte, primaryStage, sceneMenu);
@@ -99,16 +87,14 @@ public class Main extends Application {
         FormaPagamentoController controllerFormaPagamento = new FormaPagamentoController(viewFormaPagamento, primaryStage, sceneMenu);
 
         LocalController controllerLocal = new LocalController(viewLocal, primaryStage, sceneMenu);
-
-        PublicacaoController controllerPublicacao = new PublicacaoController(viewPublicacao, primaryStage, sceneMenu);
-
-        AvaliacaoController controllerAvaliacao = new AvaliacaoController(viewAvaliacao, primaryStage, sceneMenu);
-
+        
+        // Configura o MenuController com o EventoController para recarregar categorias
         menuController.setEventoController(controllerEvento);
 
         primaryStage.setTitle("JoinUp");
         primaryStage.setScene(sceneMenu);
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {

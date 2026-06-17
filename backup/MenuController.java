@@ -19,14 +19,9 @@ public class MenuController {
     private Scene sceneIngresso;
     private Scene sceneFormaPagamento;
     private Scene sceneLocal;
-    private Scene scenePublicacao;
-    private Scene sceneAvaliacao;
-
     public MenuController(MenuView view, Stage primaryStage, Scene sceneCategoria, Scene sceneEvento,
             Scene sceneParticipante, Scene sceneOrganizador, Scene sceneArtista, Scene sceneIngresso,
-            Scene sceneSuporte, Scene sceneChamadoSuporte, Scene sceneFormaPagamento, Scene sceneLocal,
-            Scene scenePublicacao, Scene sceneAvaliacao) {
-
+            Scene sceneSuporte, Scene sceneChamadoSuporte, Scene sceneFormaPagamento, Scene sceneLocal) {
         this.view = view;
         this.primaryStage = primaryStage;
         this.sceneCategoria = sceneCategoria;
@@ -39,9 +34,6 @@ public class MenuController {
         this.sceneChamadoSuporte = sceneChamadoSuporte;
         this.sceneFormaPagamento = sceneFormaPagamento;
         this.sceneLocal = sceneLocal;
-        this.scenePublicacao = scenePublicacao;
-        this.sceneAvaliacao = sceneAvaliacao;
-
         this.view.getBotaoCategoria().setOnAction(event -> irParaCategoria());
         this.view.getBotaoEvento().setOnAction(event -> irParaEvento());
         this.view.getBotaoParticipante().setOnAction(event -> irParaParticipante());
@@ -52,8 +44,6 @@ public class MenuController {
         this.view.getBotaoChamadoSuporte().setOnAction(event -> irParaChamadoSuporte());
         this.view.getBotaoFormaPagamento().setOnAction(event -> irParaFormaPagamento());
         this.view.getBotaoLocal().setOnAction(event -> irParaLocal());
-        this.view.getBotaoPublicacao().setOnAction(event -> irParaPublicacao());
-        this.view.getBotaoAvaliacao().setOnAction(event -> irParaAvaliacao());
     }
 
     public void setEventoController(EventoController eventoController) {
@@ -65,6 +55,7 @@ public class MenuController {
     }
 
     private void irParaEvento() {
+        // Recarrega as categorias antes de ir para a tela de eventos
         if (eventoController != null) {
             eventoController.recarregarCategorias();
         }
@@ -101,13 +92,5 @@ public class MenuController {
 
     private void irParaLocal() {
         primaryStage.setScene(sceneLocal);
-    }
-
-    private void irParaPublicacao() {
-        primaryStage.setScene(scenePublicacao);
-    }
-
-    private void irParaAvaliacao() {
-        primaryStage.setScene(sceneAvaliacao);
     }
 }

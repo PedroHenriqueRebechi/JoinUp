@@ -20,8 +20,6 @@ public class MenuView extends GridPane {
     private Button botaoChamadoSuporte;
     private Button botaoFormaPagamento;
     private Button botaoLocal;
-    private Button botaoPublicacao;
-    private Button botaoAvaliacao;
 
     public MenuView() {
         configurarTela();
@@ -33,21 +31,18 @@ public class MenuView extends GridPane {
         cabecalho.setAlignment(Pos.CENTER_LEFT);
         cabecalho.getChildren().addAll(titulo, subtitulo);
 
-        botaoEvento = criarBotaoMenu("Gestão de eventos");
-        botaoParticipante = criarBotaoMenu("Gestão de Participantes");
-        botaoOrganizador = criarBotaoMenu("Gestão de Organizadores");
-        botaoArtista = criarBotaoMenu("Gestão de Artistas");
+        botaoEvento = criarBotaoMenu("Gestão de eventos", "Cadastrar, editar e visualizar eventos");
+        botaoParticipante = criarBotaoMenu("Participantes", "Gerenciar participantes cadastrados");
+        botaoOrganizador = criarBotaoMenu("Organizadores", "Controlar organizadores de eventos");
+        botaoArtista = criarBotaoMenu("Artistas", "Cadastrar artistas e atrações");
 
-        botaoIngresso = criarBotaoMenu("Gestão de Ingressos");
-        botaoCategoria = criarBotaoMenu("Gestão de Categorias");
-        botaoLocal = criarBotaoMenu("Gestão de Locais");
-        botaoFormaPagamento = criarBotaoMenu("Formas de pagamento");
+        botaoIngresso = criarBotaoMenu("Ingressos", "Gerenciar ingressos dos eventos");
+        botaoCategoria = criarBotaoMenu("Categorias", "Organizar tipos de eventos");
+        botaoLocal = criarBotaoMenu("Locais", "Cadastrar locais dos eventos");
+        botaoFormaPagamento = criarBotaoMenu("Formas de pagamento", "Gerenciar métodos de pagamento");
 
-        botaoSuporte = criarBotaoMenu("Suporte");
-        botaoChamadoSuporte = criarBotaoMenu("Chamados de suporte");
-
-        botaoPublicacao = criarBotaoMenu("Publicações");
-        botaoAvaliacao = criarBotaoMenu("Avaliações");
+        botaoSuporte = criarBotaoMenu("Suporte", "Cadastrar canais de atendimento");
+        botaoChamadoSuporte = criarBotaoMenu("Chamados de suporte", "Acompanhar solicitações abertas");
 
         GridPane gradeBotoes = criarGradeBotoes();
 
@@ -65,9 +60,6 @@ public class MenuView extends GridPane {
 
         adicionarBotaoNaGrade(gradeBotoes, botaoSuporte, 0, 4);
         adicionarBotaoNaGrade(gradeBotoes, botaoChamadoSuporte, 1, 4);
-
-        adicionarBotaoNaGrade(gradeBotoes, botaoPublicacao, 0, 5);
-        adicionarBotaoNaGrade(gradeBotoes, botaoAvaliacao, 1, 5);
 
         VBox container = new VBox(28);
         container.setAlignment(Pos.TOP_CENTER);
@@ -128,13 +120,13 @@ public class MenuView extends GridPane {
         return grade;
     }
 
-    private Button criarBotaoMenu(String titulo) {
-        Button botao = new Button(titulo);
+    private Button criarBotaoMenu(String titulo, String descricao) {
+        Button botao = new Button(titulo + "\n" + descricao);
 
-        botao.setPrefSize(320, 56);
+        botao.setPrefSize(320, 78);
         botao.setMaxWidth(Double.MAX_VALUE);
         botao.setAlignment(Pos.CENTER_LEFT);
-        botao.setPadding(new Insets(12, 18, 12, 18));
+        botao.setPadding(new Insets(14, 18, 14, 18));
 
         aplicarEstiloNormal(botao);
 
@@ -214,13 +206,5 @@ public class MenuView extends GridPane {
 
     public Button getBotaoLocal() {
         return botaoLocal;
-    }
-
-    public Button getBotaoPublicacao() {
-        return botaoPublicacao;
-    }
-
-    public Button getBotaoAvaliacao() {
-        return botaoAvaliacao;
     }
 }
