@@ -17,10 +17,11 @@ public class MenuController {
     private EventoController eventoController;
     private Scene sceneArtista;
     private Scene sceneIngresso;
-
+    private Scene sceneFormaPagamento;
+    private Scene sceneLocal;
     public MenuController(MenuView view, Stage primaryStage, Scene sceneCategoria, Scene sceneEvento,
             Scene sceneParticipante, Scene sceneOrganizador, Scene sceneArtista, Scene sceneIngresso,
-            Scene sceneSuporte, Scene sceneChamadoSuporte) {
+            Scene sceneSuporte, Scene sceneChamadoSuporte, Scene sceneFormaPagamento, Scene sceneLocal) {
         this.view = view;
         this.primaryStage = primaryStage;
         this.sceneCategoria = sceneCategoria;
@@ -31,7 +32,8 @@ public class MenuController {
         this.sceneIngresso = sceneIngresso;
         this.sceneSuporte = sceneSuporte;
         this.sceneChamadoSuporte = sceneChamadoSuporte;
-
+        this.sceneFormaPagamento = sceneFormaPagamento;
+        this.sceneLocal = sceneLocal;
         this.view.getBotaoCategoria().setOnAction(event -> irParaCategoria());
         this.view.getBotaoEvento().setOnAction(event -> irParaEvento());
         this.view.getBotaoParticipante().setOnAction(event -> irParaParticipante());
@@ -40,6 +42,8 @@ public class MenuController {
         this.view.getBotaoIngresso().setOnAction(event -> irParaIngresso());
         this.view.getBotaoSuporte().setOnAction(event -> irParaSuporte());
         this.view.getBotaoChamadoSuporte().setOnAction(event -> irParaChamadoSuporte());
+        this.view.getBotaoFormaPagamento().setOnAction(event -> irParaFormaPagamento());
+        this.view.getBotaoLocal().setOnAction(event -> irParaLocal());
     }
 
     public void setEventoController(EventoController eventoController) {
@@ -80,5 +84,13 @@ public class MenuController {
 
     private void irParaChamadoSuporte() {
         primaryStage.setScene(sceneChamadoSuporte);
+    }
+
+    private void irParaFormaPagamento() {
+        primaryStage.setScene(sceneFormaPagamento);
+    }
+
+    private void irParaLocal() {
+        primaryStage.setScene(sceneLocal);
     }
 }

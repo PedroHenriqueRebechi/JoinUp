@@ -15,6 +15,8 @@ public class MenuView extends GridPane {
     private Button botaoIngresso;
     private Button botaoSuporte;
     private Button botaoChamadoSuporte;
+    private Button botaoFormaPagamento;
+    private Button botaoLocal;
 
     public MenuView(){
         this.setAlignment(Pos.CENTER);
@@ -30,7 +32,8 @@ public class MenuView extends GridPane {
         botaoIngresso = new Button("Ingressos");
         botaoSuporte = new Button("Suporte");
         botaoChamadoSuporte = new Button("Chamados de suporte");
-
+        botaoFormaPagamento = new Button("Formas de pagamento");
+        botaoLocal = new Button("Gestão de locais");
         this.add(botaoCategoria, 0, 0);
         this.add(botaoEvento, 0, 1);
         this.add(botaoParticipante, 0, 2);
@@ -39,6 +42,8 @@ public class MenuView extends GridPane {
         this.add(botaoIngresso, 0, 5);
         this.add(botaoSuporte, 0, 6);
         this.add(botaoChamadoSuporte, 0, 7);
+        this.add(botaoFormaPagamento, 0, 8);
+        this.add(botaoLocal, 0, 9);
     }
 
     public Button getBotaoCategoria() {
@@ -71,5 +76,13 @@ public class MenuView extends GridPane {
 
     public Button getBotaoChamadoSuporte() {
         return botaoChamadoSuporte;
+    }
+
+    public Button getBotaoFormaPagamento() {
+        return botaoFormaPagamento;
+    }
+
+    public Button getBotaoLocal() {
+        return botaoLocal;
     }
 }

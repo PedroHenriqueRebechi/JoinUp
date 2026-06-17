@@ -1,6 +1,7 @@
 import controller.CategoriaController;
 import controller.ChamadoSuporteController;
 import controller.EventoController;
+import controller.FormaPagamentoController;
 import controller.MenuController;
 import controller.OrganizadorController;
 import controller.ParticipanteController;
@@ -11,19 +12,22 @@ import javafx.stage.Stage;
 import view.CategoriaView;
 import view.ChamadoSuporteView;
 import view.EventoView;
+import view.FormaPagamentoView;
 import view.MenuView;
 import view.OrganizadorView;
 import view.ParticipanteView;
 import controller.ArtistaController;
 import controller.IngressoController;
+import controller.LocalController;
 import view.ArtistaView;
 import view.IngressoView;
+import view.LocalView;
 import view.SuporteView;
 
 public class Main extends Application {
 
     Scene sceneMenu, sceneCategoria, sceneEvento, sceneParticipante, sceneOrganizador, 
-          sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte;
+          sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte, sceneFormaPagamento, sceneLocal;
 
     @Override
     public void start(Stage primaryStage) {
@@ -55,8 +59,14 @@ public class Main extends Application {
         ChamadoSuporteView viewChamadoSuporte = new ChamadoSuporteView();
         sceneChamadoSuporte = new Scene(viewChamadoSuporte, 1040, 360);
 
+        FormaPagamentoView viewFormaPagamento = new FormaPagamentoView();
+        sceneFormaPagamento = new Scene(viewFormaPagamento, 1040, 360);
+
+        LocalView viewLocal = new LocalView();
+        sceneLocal = new Scene(viewLocal, 1040, 360);
+
         MenuController menuController = new MenuController(menuView, primaryStage, sceneCategoria, sceneEvento,
-                sceneParticipante, sceneOrganizador, sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte);
+                sceneParticipante, sceneOrganizador, sceneArtista, sceneIngresso, sceneSuporte, sceneChamadoSuporte, sceneFormaPagamento, sceneLocal);
 
         CategoriaController controllerCategoria = new CategoriaController(viewCategoria, primaryStage, sceneMenu);
 
@@ -72,9 +82,12 @@ public class Main extends Application {
 
         SuporteController controllerSuporte = new SuporteController(viewSuporte, primaryStage, sceneMenu);
 
-        ChamadoSuporteController controllerChamadoSuporte = new ChamadoSuporteController(viewChamadoSuporte,
-                primaryStage, sceneMenu);
+        ChamadoSuporteController controllerChamadoSuporte = new ChamadoSuporteController(viewChamadoSuporte, primaryStage, sceneMenu);
 
+        FormaPagamentoController controllerFormaPagamento = new FormaPagamentoController(viewFormaPagamento, primaryStage, sceneMenu);
+
+        LocalController controllerLocal = new LocalController(viewLocal, primaryStage, sceneMenu);
+        
         // Configura o MenuController com o EventoController para recarregar categorias
         menuController.setEventoController(controllerEvento);
 
